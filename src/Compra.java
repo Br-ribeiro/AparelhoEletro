@@ -1,21 +1,31 @@
-import java.util.ArrayList;
+import java.util.Date;
 
 public class Compra {
 	
-	private String Data;
+	private Date Data;
 	private int codecli;
 	private int numeroSerie;
+	private int numeroDeCompra;
 	
-	public Compra (String Data, int codecli, int numeroSerie) {
+	public Compra (Date Data, int codecli, int numeroSerie, int numeroDeCompra) {
 		this.Data = Data;
 		this.codecli = codecli;
 		this.numeroSerie = numeroSerie;
+		this.numeroDeCompra = numeroDeCompra;
 	}
 	
-	public String getData() {
+	public int getNumeroDeCompra() {
+		return numeroDeCompra;
+	}
+
+	public void setNumeroDeCompra(int numeroDeCompra) {
+		this.numeroDeCompra = numeroDeCompra;
+	}
+
+	public Date getData() {
 		return Data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		Data = data;
 	}
 	public int getCodecli() {
