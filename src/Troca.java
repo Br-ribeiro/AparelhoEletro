@@ -12,21 +12,25 @@ public class Troca {
 	private String defeito;
 	private Date data;
 	private int numeroCompra;
+	private int clienteComprador;
 	
+
 	float dataCompra = 0;
 	float dataTroca  = 0;
 	int numeroaparelho = 0;
 	
+	
 	public Troca() {}
 	
-	public Troca(String defeito,Date data, int numeroCompra) {
+	public Troca(String defeito,Date data, int numeroCompra, int clienteComprador) {
 		this.defeito = defeito;
 		this.data = data;
 		this.numeroCompra = numeroCompra;
+		this.clienteComprador = clienteComprador;
 		System.out.println("trocou");
 	}
 	
-	public void cadastrarTroca(Date data, int numeroCompra, String defeito) {
+	public void cadastrarTroca(Date data, int numeroCompra, String defeito, int codcli) {
 		
 		for(Compra A : compraClass.getCompras()) {
 			if(A.getNumeroDeCompra() == numeroCompra) {
@@ -42,7 +46,7 @@ public class Troca {
 			for(Aparelho A : aparelhoClass.getAparelho()) {
 				if(A.getSerie() == numeroaparelho) {
 					A.setStatus("Quebrado");
-					trocas.add(new Troca(defeito,data,numeroCompra));
+					trocas.add(new Troca(defeito,data,numeroCompra,codcli));
 					System.out.println("vc está com um celular a menos vá comprar mais para a loja");
 				}
 			}	
@@ -79,6 +83,13 @@ public class Troca {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+	public int getClienteComprador() {
+		return clienteComprador;
+	}
+
+	public void setClienteComprador(int clienteComprador) {
+		this.clienteComprador = clienteComprador;
 	}
 	public static ArrayList<Troca> getTrocas() {
 		return trocas;

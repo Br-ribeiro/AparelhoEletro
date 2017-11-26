@@ -2,8 +2,9 @@ import java.util.ArrayList;
 
 public class Cliente {
 	
-	ArrayList<Cliente>  cliente  = new ArrayList< Cliente>();
+	private static ArrayList<Cliente>  cliente  = new ArrayList< Cliente>();
 	
+
 	private int codiCli;
 	private String nome;
 	private String endereco;
@@ -68,6 +69,13 @@ public class Cliente {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	public static ArrayList<Cliente> getCliente() {
+		return cliente;
+	}
+
+	public static void setCliente(ArrayList<Cliente> cliente) {
+		Cliente.cliente = cliente;
 	}
 
 }
