@@ -177,33 +177,19 @@ public class Menu {
 	}
 	
 //====================================================================================================
-	
-	public int Clientecod(){
-		
-		for(Compra C: compra.getCompras()) {
+	public void clientesLimpos() {
+		for(Cliente C: cliente.getCliente()) {
 			int cont = 0;
 			for(Troca T: troca.getTrocas()) {
-				if(C.getCodecli() == T.getClienteComprador()) {
+				if(C.getCodiCli() == T.getClienteComprador()) {
 					cont = 1;
 				}
 				
 			}
 			if(cont == 0) {
-				//System.out.println("os clientes limpos são: "+ C.getNome());
-				return C.getCodecli();
-			}
-		}
-		return 0;
-	}
-	
-	
-	public void clientesLimpos() {
-		for(Cliente C: cliente.getCliente()){
-			if(C.getCodiCli() == Clientecod()){
 				System.out.println("os clientes limpos são: "+ C.getNome());
 			}
 		}
-		
 	}
 //====================================================================================================	
 	public int clienteTrocas() {
