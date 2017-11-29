@@ -27,7 +27,6 @@ public class Troca {
 		this.data = data;
 		this.numeroCompra = numeroCompra;
 		this.clienteComprador = clienteComprador;
-		System.out.println("trocou");
 	}
 	
 	public void cadastrarTroca(Date data, int numeroCompra, String defeito, int codcli) {
@@ -36,21 +35,21 @@ public class Troca {
 			if(A.getNumeroDeCompra() == numeroCompra) {
 				dataCompra = A.getData().getTime();
 				numeroaparelho = A.getNumeroSerie();
-				System.out.println("entrou");
 			}
 		}
 		dataTroca = data.getTime();
 		float dias = ((dataTroca - dataCompra) / 86400000L);
-		System.out.println("dias "+ dias);
 		if(dias<=365) {
 			for(Aparelho A : aparelhoClass.getAparelho()) {
 				if(A.getSerie() == numeroaparelho) {
 					A.setStatus("Quebrado");
 					trocas.add(new Troca(defeito,data,numeroCompra,codcli));
+					System.out.println("celular trocado com sucesso");
 					System.out.println("vc está com um celular a menos vá comprar mais para a loja");
 				}
 			}	
-		}
+		}else
+			System.out.println("O seu aparenho já passou da data de garantia ");
 	}
 	
 	public void listarTrocas() {

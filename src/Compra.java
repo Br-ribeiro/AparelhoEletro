@@ -25,22 +25,38 @@ public class Compra {
 	
 	public void cadastrarCompra(Date Data, int codecli, int numeroSerie, int numeroDeCompra) {
 		boolean cont = true;
-	
 		for(Aparelho A : aparelhoClass.getAparelho()) {
-			if(A.getSerie() == numeroSerie && A.getStatus().equalsIgnoreCase("novo")) {
+			if(A.getAparelho().size() == 0 && A.getStatus().equalsIgnoreCase("novo") ){
 				A.setStatus("Vendido");
 				compras.add(new Compra(Data,codecli,numeroSerie,numeroDeCompra));
-				System.out.println("compra realizada");
-				cont = false;
+				System.out.println("primeira compra realizada");
 				break;
-			}
-		}
+			}else {
+				boolean existecompra = verificarCompra(numeroDeCompra);
+					if(A.getSerie() == numeroSerie && A.getStatus().equalsIgnoreCase("novo") && existecompra) {
+						A.setStatus("Vendido");
+						compras.add(new Compra(Data,codecli,numeroSerie,numeroDeCompra));
+						System.out.println("compra realizada");
+						cont = false;
+						break;
+					}
+				}
+		     }
 		if(cont) {
 			System.out.println("esse celular não está disponivel ou não existe");
 		}
 	}
 	
-	
+	public boolean verificarCompra( int numeroCompraVerificar){
+		
+		for(Compra C : compras){
+			if(C.getNumeroDeCompra() == numeroCompraVerificar){
+				System.out.println("Esse Numero de compra já existe");
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	public void listarCompra() {
 		for(Compra A: compras) {

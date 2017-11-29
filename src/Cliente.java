@@ -15,7 +15,7 @@ public class Cliente {
 		this.codiCli = codiCli;
 		this.nome = nome;
 		this.endereco = endereco;
-		System.out.println("criou");
+		System.out.println("Cliente cadastrado com sucesso");
 	}
 	
 	public void cadastrarCliente(int codecli,String nome,String endereco) {

@@ -167,6 +167,8 @@ public class Menu {
 			break;
 		case 4 :
 			lista();
+		case 0 :
+			break;
 		default:
 			System.out.println("essa opção não é valida");
 			break;
@@ -175,22 +177,35 @@ public class Menu {
 	}
 	
 //====================================================================================================
-	public void clientesLimpos() {
-		for(Cliente C: cliente.getCliente()) {
+	
+	public int Clientecod(){
+		
+		for(Compra C: compra.getCompras()) {
 			int cont = 0;
 			for(Troca T: troca.getTrocas()) {
-				if(C.getCodiCli() == T.getClienteComprador()) {
-					//System.out.println("os clientes que trocaram são os: "+ C.getNome());
+				if(C.getCodecli() == T.getClienteComprador()) {
 					cont = 1;
 				}
 				
 			}
 			if(cont == 0) {
+				//System.out.println("os clientes limpos são: "+ C.getNome());
+				return C.getCodecli();
+			}
+		}
+		return 0;
+	}
+	
+	
+	public void clientesLimpos() {
+		for(Cliente C: cliente.getCliente()){
+			if(C.getCodiCli() == Clientecod()){
 				System.out.println("os clientes limpos são: "+ C.getNome());
 			}
 		}
+		
 	}
-	
+//====================================================================================================	
 	public int clienteTrocas() {
 		for(Troca T: troca.getTrocas()) {
 			return T.getClienteComprador();
